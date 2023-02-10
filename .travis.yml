@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - dockert build -t kannan15/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true kannan15/docker-react npm run test -- --coverage
